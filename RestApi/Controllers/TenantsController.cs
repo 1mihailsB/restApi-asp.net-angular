@@ -24,7 +24,9 @@ namespace RestApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Tenant>>> GetTenants()
         {
-            return await _context.Tenants.Include(tenant => tenant.Apartment.House).ToListAsync();
+            List<Tenant> tenants = await _context.Tenants.Include(t => t.Apartment.House).ToListAsync();
+
+            return tenants;
         }
 
         // GET: api/Tenants/5

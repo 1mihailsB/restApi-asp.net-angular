@@ -15,7 +15,6 @@ namespace RestApi.Models
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public long? ApartmentId { get; set; }
-
         public Apartment Apartment { get; set; }
     }
 }

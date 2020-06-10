@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
+import { DatePipe } from '@angular/common'
 
 @Component({
   selector: 'app-home',
@@ -10,11 +11,11 @@ export class HomeComponent {
 
   public tenants: Tenant[];
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, public datepipe: DatePipe) {
     http.get<Tenant[]>(baseUrl + 'api/Tenants').subscribe(result => {
       this.tenants = result;
       console.log("tenants>", this.tenants);
-      console.log("bday>", this.tenants[0].birthday)
+      console.log("bday>", this.datepipe.transform(this.tenants[0].birthday, "dd-MM-yyyy"));
     }, error => console.error(error));
   }
 }

@@ -24,7 +24,8 @@ namespace RestApi
         {
             services.AddDbContext<GeneralContext>(opt => opt.UseInMemoryDatabase("RestApi"));
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddNewtonsoftJson(options => 
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
