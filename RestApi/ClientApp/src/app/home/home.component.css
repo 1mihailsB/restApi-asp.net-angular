@@ -6,6 +6,7 @@ h1 {
   float: left;
   width: 33.33%;
   background-color: rgb(201, 217, 222);
+  padding-left: 0.5em;
 }
 
 .row {
@@ -15,9 +16,9 @@ h1 {
   border-bottom-style: solid;
 }
 
-  .row p {
-      margin-bottom: 0;
-  }
+.row p {
+    margin-bottom: 0;
+}
 
 .row:after {
   content: "";

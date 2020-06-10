@@ -1,1 +1,27 @@
-<div style="border: 1px solid red">houses Component</div>
+<div style="border: 1px solid red" class="mb-2">Houses Component</div>
+
+<div class="example-button-container">
+  <button mat-mini-fab color="accent" [routerLink]="['/create-house']" aria-label="Example icon button with a plus one icon">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+
+<div class="row">
+  <div class="column">
+    <h3>House</h3>
+  </div>
+</div>
+
+<div *ngFor="let house of houses" class="row">
+  <div class="column">
+    <div *ngIf="house!=null; then houseThenBlock else houseElseBlock"></div>
+    <ng-template #houseThenBlock>
+      <p>number: {{house.number}}</p>
+      <p>street: {{house.street}}</p>
+      <p>city: {{house.city}}</p>
+      <p>country: {{house.country}}</p>
+      <p>post index: {{house.postIndex}}</p>
+    </ng-template>
+    <ng-template #houseElseBlock>none</ng-template>
+  </div>
+</div>

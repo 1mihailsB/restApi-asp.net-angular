@@ -1,0 +1,45 @@
+<div style="border: 1px solid red">createHouse Component</div>
+
+<div class="play-container">
+
+  <p>
+    <mat-form-field appearance="legacy">
+      <mat-label>House number</mat-label>
+      <input matInput type="number" placeholder={{house.number}} [(ngModel)]="house.number">
+      <mat-hint>int</mat-hint>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="legacy">
+      <mat-label>Street</mat-label>
+      <input matInput placeholder={{house.street}} [(ngModel)]="house.street">
+      <mat-hint>string</mat-hint>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="legacy">
+      <mat-label>City</mat-label>
+      <input matInput placeholder={{house.city}} [(ngModel)]="house.city">
+      <mat-hint>string</mat-hint>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="legacy">
+      <mat-label>Country</mat-label>
+      <input matInput placeholder={{house.country}} [(ngModel)]="house.country">
+      <mat-hint>string</mat-hint>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="legacy">
+      <mat-label>Post Index</mat-label>
+      <input matInput placeholder={{house.postIndex}} [(ngModel)]="house.postIndex">
+      <mat-hint>string</mat-hint>
+    </mat-form-field>
+  </p>
+
+  <div class="example-button-row">
+    <button mat-raised-button color="primary" (click)="printHouse(this.house)">Primary</button>
+  </div>
+
+</div>

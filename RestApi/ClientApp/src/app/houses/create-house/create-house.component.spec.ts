@@ -1,21 +1,21 @@
-/// <reference path="../../../../node_modules/@types/jasmine/index.d.ts" />
+﻿/// <reference path="../../../../../node_modules/@types/jasmine/index.d.ts" />
 import { TestBed, async, ComponentFixture, ComponentFixtureAutoDetect } from '@angular/core/testing';
 import { BrowserModule, By } from "@angular/platform-browser";
-import { HousesComponent } from './houses.component';
+import { CreateHouseComponent } from './create-house.component';
 
-let component: HousesComponent;
-let fixture: ComponentFixture<HousesComponent>;
+let component: CreateHouseComponent;
+let fixture: ComponentFixture<CreateHouseComponent>;
 
-describe('houses component', () => {
+describe('createHouse component', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [ HousesComponent ],
+            declarations: [ CreateHouseComponent ],
             imports: [ BrowserModule ],
             providers: [
                 { provide: ComponentFixtureAutoDetect, useValue: true }
             ]
         });
-        fixture = TestBed.createComponent(HousesComponent);
+        fixture = TestBed.createComponent(CreateHouseComponent);
         component = fixture.componentInstance;
     }));
 
