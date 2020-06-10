@@ -14,6 +14,7 @@ export class HomeComponent {
     http.get<Tenant[]>(baseUrl + 'api/Tenants').subscribe(result => {
       this.tenants = result;
       console.log("tenants>", this.tenants);
+      console.log("bday>", this.tenants[0].birthday)
     }, error => console.error(error));
   }
 }

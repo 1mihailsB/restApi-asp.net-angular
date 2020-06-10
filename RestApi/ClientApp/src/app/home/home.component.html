@@ -1,1 +1,49 @@
 <h1>bbit.lv</h1>
+
+<div class="row">
+  <div class="column">
+    <h3>Tenant</h3>
+  </div>
+  <div class="column">
+    <h3>Apartment</h3>
+  </div>
+  <div class="column">
+    <h3>House</h3>
+  </div>
+</div>
+
+<div *ngFor="let tenant of tenants" class="row">
+  <div class="column">
+    <!-- probably is possible to iterate over all properties of an object instead of hardcoding,
+         but there are some properties I don't want to show on the page, so I will hardcode -->
+    <p>name: {{tenant.firstName}}</p>
+    <p>last name: {{tenant.lastName}}</p>
+    <p>personal code: {{tenant.personalCode}}</p>
+    <p>birthday: {{tenant.birthday}}</p>
+    <p>phone: {{tenant.phoneNumber}}</p>
+    <p>e-mail: {{tenant.email}}</p>
+  </div>
+  <div class="column">
+    <div *ngIf="tenant.apartment!=null; then apartmentThenBlock else apartmentElseBlock"></div>
+    <ng-template #apartmentThenBlock>
+      <p>number: {{tenant.apartment.number}}</p>
+      <p>floor: {{tenant.apartment.floor}}</p>
+      <p>rooms: {{tenant.apartment.amountOfRooms}}</p>
+      <p>tenants: {{tenant.apartment.amountOfTenants}}</p>
+      <p>area: {{tenant.apartment.totalArea}}&#13217;</p>
+      <p>available area: {{tenant.apartment.availableArea}}&#13217;</p>
+    </ng-template>
+    <ng-template #apartmentElseBlock>none</ng-template>
+  </div>
+  <div class="column">
+    <div *ngIf="tenant.apartment!=null && tenant.apartment.house!=null; then houseThenBlock else houseElseBlock"></div>
+    <ng-template #houseThenBlock>
+      <p>number: {{tenant.apartment.house.number}}</p>
+      <p>street: {{tenant.apartment.house.street}}</p>
+      <p>city: {{tenant.apartment.house.city}}</p>
+      <p>country: {{tenant.apartment.house.country}}</p>
+      <p>post index: {{tenant.apartment.house.postIndex}}</p>
+    </ng-template>
+    <ng-template #houseElseBlock>none</ng-template>
+  </div>
+</div>
