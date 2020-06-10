@@ -24,7 +24,7 @@ namespace RestApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Tenant>>> GetTenants()
         {
-            List<Tenant> tenants = await _context.Tenants.Include(t => t.Apartment.House).ToListAsync();
+            List<Tenant> tenants = await _context.Tenants.Include(tenant => tenant.Apartment).ThenInclude(a => a.House).ToListAsync();
 
             return tenants;
         }
@@ -33,7 +33,7 @@ namespace RestApi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Tenant>> GetTenant(long id)
         {
-            var tenant = await _context.Tenants.Include(tenant => tenant.Apartment.House).FirstOrDefaultAsync(x => x.Id == id);
+            var tenant = await _context.Tenants.Include(tenant => tenant.Apartment).ThenInclude(a => a.House).FirstOrDefaultAsync(x => x.Id == id);
 
             if (tenant == null)
             {

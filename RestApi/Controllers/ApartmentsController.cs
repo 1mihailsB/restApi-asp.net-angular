@@ -24,14 +24,16 @@ namespace RestApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Apartment>>> GetApartments()
         {
-            return await _context.Apartments.Include(apartment => apartment.House).ToListAsync();
+            return await _context.Apartments.Include(apartment => apartment.House)
+                .Include(apartment => apartment.Tenants).ToListAsync();
         }
 
         // GET: api/Apartments/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Apartment>> GetApartment(long id)
         {
-            var apartment = await _context.Apartments.Include(apartment => apartment.House).FirstOrDefaultAsync(x => x.Id ==id);
+            var apartment = await _context.Apartments.Include(apartment => apartment.House)
+                .Include(apartment => apartment.Tenants).FirstOrDefaultAsync(x => x.Id ==id);
 
             if (apartment == null)
             {
