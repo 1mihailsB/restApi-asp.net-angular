@@ -19,8 +19,8 @@ export class CreateHouseComponent {
     console.log(this.house);
   }
 
-  public printHouse(house) {
-    console.log(house);
+  public printHouse() {
+    console.log(this.house);
   }
 }
 

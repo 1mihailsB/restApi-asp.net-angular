@@ -14,8 +14,6 @@ export class HomeComponent {
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, public datepipe: DatePipe) {
     http.get<Tenant[]>(baseUrl + 'api/Tenants').subscribe(result => {
       this.tenants = result;
-      console.log("tenants>", this.tenants);
-      console.log("bday>", this.datepipe.transform(this.tenants[0].birthday, "dd-MM-yyyy"));
     }, error => console.error(error));
   }
 }

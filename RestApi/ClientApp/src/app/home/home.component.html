@@ -1,4 +1,4 @@
-<h1>bbit.lv</h1>
+<h1>bbit</h1>
 
 <div class="row">
   <div class="column">
@@ -19,7 +19,7 @@
     <p>name: {{tenant.firstName}}</p>
     <p>last name: {{tenant.lastName}}</p>
     <p>personal code: {{tenant.personalCode}}</p>
-    <p>birthday: {{this.datepipe.transform(this.tenants[0].birthday, "dd.MM.yyyy")}}</p>
+    <p>birthday(d-m-y): {{this.datepipe.transform(this.tenants[0].birthday, "dd-MM-yyyy")}}</p>
     <p>phone: {{tenant.phoneNumber}}</p>
     <p>e-mail: {{tenant.email}}</p>
   </div>
