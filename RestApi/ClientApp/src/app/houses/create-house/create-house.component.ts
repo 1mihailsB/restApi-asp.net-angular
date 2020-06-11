@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-create-house',
@@ -14,13 +16,17 @@ export class CreateHouseComponent {
     country: "",
     postIndex: ""
   };
-  
-  constructor() {
-    console.log(this.house);
+  private http: HttpClient;
+  private baseUrl: string;
+  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, private router: Router) {
+    this.http = http;
+    this.baseUrl = baseUrl;
   }
 
-  public printHouse() {
-    console.log(this.house);
+  public createHouse() {
+    this.http.post<House>(this.baseUrl + 'api/Houses', this.house).subscribe(result => {
+      this.router.navigate(['/houses']);
+    }, error => console.log(error));
   }
 }
 
