@@ -1,1 +1,58 @@
-﻿
+h1 {
+  color: rgb(85, 92, 213);
+}
+
+.column {
+  float: left;
+  width: 32.3%;
+  background-color: rgb(201, 217, 222);
+  padding-left: 0.5em;
+}
+
+.row {
+  border-width: 2px;
+  border-bottom-width: 2px;
+  border-bottom-color: white;
+  border-bottom-style: solid;
+  margin-left: 1.8%;
+}
+
+.row p {
+  margin-bottom: 0;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 40px;
+  margin-left: -2%;
+  margin-bottom: 0.5em;
+
+  &button {
+    &:focus, &:active {
+      border: 0;
+      outline: 0;
+    }
+  }
+}
+
+.example-button-container button:focus, .example-button-container button:active {
+  border: 0;
+  outline: 0;
+}
+
+.mat-accent {
+  background-color: orangered;
+  color: white;
+}
+
+#add-tenant-button {
+  position: relative;
+  left: 2em;
+}
