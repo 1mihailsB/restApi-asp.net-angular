@@ -9,7 +9,7 @@
 .example-button-container {
   display: flex;
   justify-content: center;
-  width: 120px;
+  width: 40px;
   margin-left: -2%;
   margin-bottom: 0.5em;
 
@@ -31,7 +31,26 @@
   color: white;
 }
 
+#houses{
+    position: relative;
+}
 
+#add-house-button{
+    position: relative;
+    left: 2em;
+}
+
+#edit-house-button {
+  position: absolute;
+  right: 4em;
+  top: 5%;
+}
+
+#delete-house-button {
+  position: absolute;
+  right: 1em;
+  top: 5%;
+}
 
 .row {
   border-width: 2px;

@@ -13,6 +13,7 @@ import { TenantsComponent } from './tenants/tenants.component';
 import { ApartmentsComponent } from './apartments/apartments.component';
 import { HousesComponent } from './houses/houses.component';
 import { CreateHouseComponent } from './houses/create-house/create-house.component'
+import { EditHouseComponent } from './houses/edit-house/edit-house.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -23,7 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TenantsComponent,
     ApartmentsComponent,
     HousesComponent,
-    CreateHouseComponent
+    CreateHouseComponent,
+    EditHouseComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -35,7 +37,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       { path: 'tenants', component: TenantsComponent },
       { path: 'apartments', component: ApartmentsComponent },
       { path: 'houses', component: HousesComponent },
-      { path: 'create-house', component: CreateHouseComponent }
+      { path: 'create-house', component: CreateHouseComponent },
+      { path: 'edit-house/:id', component: EditHouseComponent }
     ]),
     BrowserAnimationsModule
   ],

@@ -1,6 +1,6 @@
 <div style="border: 1px solid red" class="mb-2">Houses Component</div>
 
-<div class="example-button-container">
+<div class="example-button-container" id="add-house-button">
   <button mat-mini-fab color="accent" [routerLink]="['/create-house']" aria-label="Example icon button with a plus one icon">
     <mat-icon>add</mat-icon>
   </button>
@@ -13,9 +13,22 @@
 </div>
 
 <div *ngFor="let house of houses" class="row">
-  <div class="column">
+  <div class="column" id="houses">
     <div *ngIf="house!=null; then houseThenBlock else houseElseBlock"></div>
     <ng-template #houseThenBlock>
+
+      <div class="example-button-container" id="edit-house-button">
+        <button mat-mini-fab color="accent" [routerLink]="'/edit-house/' + house.id" aria-label="Example icon button with a plus one icon">
+          <mat-icon>create</mat-icon>
+        </button>
+      </div>
+
+      <div class="example-button-container" id="delete-house-button">
+        <button mat-mini-fab color="accent" (click)="deleteHouse(house.id)" aria-label="Example icon button with a plus one icon">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+
       <p>number: {{house.number}}</p>
       <p>street: {{house.street}}</p>
       <p>city: {{house.city}}</p>
