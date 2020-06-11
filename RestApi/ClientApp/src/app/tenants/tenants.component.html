@@ -22,7 +22,7 @@
   <div class="column">
 
     <div class="example-button-container" id="edit-tenant-button">
-      <button mat-mini-fab color="accent" [routerLink]="'/edit-apartment/'" aria-label="Example icon button with a plus one icon">
+      <button mat-mini-fab color="accent" [routerLink]="'/edit-tenant/' + tenant.id" aria-label="Example icon button with a plus one icon">
         <mat-icon>create</mat-icon>
       </button>
     </div>
@@ -36,7 +36,7 @@
     <p>name: {{tenant.firstName}}</p>
     <p>last name: {{tenant.lastName}}</p>
     <p>personal code: {{tenant.personalCode}}</p>
-    <p>birthday(d-m-y): {{this.datepipe.transform(this.tenants[0].birthday, "dd-MM-yyyy")}}</p>
+    <p>birthday(d-m-y): {{this.datepipe.transform(this.tenant.birthday, "dd-MM-yyyy")}}</p>
     <p>phone: {{tenant.phoneNumber}}</p>
     <p>e-mail: {{tenant.email}}</p>
   </div>

@@ -11,9 +11,10 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { TenantsComponent } from './tenants/tenants.component';
 import { CreateTenantComponent } from './tenants/create-tenant/create-tenant.component';
+import { EditTenantComponent } from './tenants/edit-tenant/edit-tenant.component';
 import { ApartmentsComponent } from './apartments/apartments.component';
 import { CreateApartmentComponent } from './apartments/create-apartment/create-apartment.component';
-import { EditApartmentComponent } from './apartments/edit-apartment/edit-apartment.component'
+import { EditApartmentComponent } from './apartments/edit-apartment/edit-apartment.component';
 import { HousesComponent } from './houses/houses.component';
 import { CreateHouseComponent } from './houses/create-house/create-house.component'
 import { EditHouseComponent } from './houses/edit-house/edit-house.component'
@@ -26,6 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomeComponent,
     TenantsComponent,
     CreateTenantComponent,
+    EditTenantComponent,
     ApartmentsComponent,
     CreateApartmentComponent,
     EditApartmentComponent,
@@ -42,6 +44,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'tenants', component: TenantsComponent },
       { path: 'create-tenant', component: CreateTenantComponent },
+      { path: 'edit-tenant/:id', component: EditTenantComponent},
       { path: 'apartments', component: ApartmentsComponent },
       { path: 'create-apartment', component: CreateApartmentComponent },
       { path: 'edit-apartment/:id', component: EditApartmentComponent},

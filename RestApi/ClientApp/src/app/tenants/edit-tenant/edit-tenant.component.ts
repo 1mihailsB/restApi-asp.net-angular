@@ -1,15 +1,16 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-    selector: 'app-create-tenant',
-    templateUrl: './create-tenant.component.html',
-    styleUrls: ['./create-tenant.component.scss']
+    selector: 'app-edit-tenant',
+    templateUrl: './edit-tenant.component.html',
+    styleUrls: ['./edit-tenant.component.scss']
 })
-
-export class CreateTenantComponent {
+/** editTenant component*/
+export class EditTenantComponent {
   public tenant: Tenant = {
+    id: null,
     firstName: "",
     lastName: "",
     personalCode: "",
@@ -21,21 +22,27 @@ export class CreateTenantComponent {
 
   public apartments: Apartment[];
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private router: Router) {
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private router: Router, private route: ActivatedRoute) {
     http.get<Apartment[]>(baseUrl + 'api/Apartments').subscribe(result => {
       this.apartments = result;
+      console.log("apartments>", this.apartments);
+    }, error => console.error(error));
+
+    http.get<Tenant>(baseUrl + 'api/Tenants/' + this.route.snapshot.params.id).subscribe(result => {
+      this.tenant = result;
+      console.log("edit tenant>",this.tenant);
     }, error => console.error(error));
   }
 
-  public createTenant() {
-    this.http.post<Tenant>(this.baseUrl + 'api/Tenants', this.tenant).subscribe(result => {
+  public editTenant() {
+    this.http.put<Tenant>(this.baseUrl + 'api/Tenants/' + this.tenant.id, this.tenant).subscribe(result => {
       this.router.navigate(['/tenants']);
-      console.log(result);
     }, error => console.log(error));
   }
 }
 
 interface Tenant {
+  id: number;
   firstName: string;
   lastName: string;
   personalCode: string;

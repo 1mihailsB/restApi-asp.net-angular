@@ -15,6 +15,7 @@ export class TenantsComponent {
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private router: Router, private datepipe: DatePipe) {
     http.get<Tenant[]>(baseUrl + 'api/Tenants').subscribe(result => {
       this.tenants = result;
+      console.log("tenants>",this.tenants);
     }, error => console.error(error));
   }
 

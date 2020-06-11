@@ -23,7 +23,6 @@ export class EditApartmentComponent {
 
   public houses: House[];
 
-
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private router: Router, private route: ActivatedRoute) {
     http.get<House[]>(baseUrl + 'api/Houses').subscribe(result => {
       this.houses = result;
