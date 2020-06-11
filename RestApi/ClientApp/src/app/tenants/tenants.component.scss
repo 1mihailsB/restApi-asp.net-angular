@@ -56,3 +56,19 @@ h1 {
   position: relative;
   left: 2em;
 }
+
+#relative-parent {
+  position: relative;
+}
+
+#edit-tenant-button {
+  position: absolute;
+  right: 6em;
+  top: 5%;
+}
+
+#delete-tenant-button {
+  position: absolute;
+  right: 3em;
+  top: 5%;
+}

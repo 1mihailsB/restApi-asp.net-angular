@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
-import { DatePipe } from '@angular/common'
+import { HttpClient } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tenants',
@@ -11,9 +12,17 @@ import { DatePipe } from '@angular/common'
 export class TenantsComponent {
   public tenants: Tenant[];
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, public datepipe: DatePipe) {
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private router: Router, private datepipe: DatePipe) {
     http.get<Tenant[]>(baseUrl + 'api/Tenants').subscribe(result => {
       this.tenants = result;
+    }, error => console.error(error));
+  }
+
+  public deleteTenant(id: number) {
+    this.http.delete(this.baseUrl + 'api/Tenants/' + id).subscribe(result => {
+      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['/tenants']);
+      });
     }, error => console.error(error));
   }
 

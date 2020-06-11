@@ -18,10 +18,21 @@
   </div>
 </div>
 
-<div *ngFor="let tenant of tenants" class="row">
+<div *ngFor="let tenant of tenants" class="row" id="relative-parent">
   <div class="column">
-    <!-- probably is possible to iterate over all properties of an object instead of hardcoding,
-         but there are some properties I don't want to show on the page, so I will hardcode -->
+
+    <div class="example-button-container" id="edit-tenant-button">
+      <button mat-mini-fab color="accent" [routerLink]="'/edit-apartment/'" aria-label="Example icon button with a plus one icon">
+        <mat-icon>create</mat-icon>
+      </button>
+    </div>
+
+    <div class="example-button-container" id="delete-tenant-button">
+      <button mat-mini-fab color="accent" (click)="deleteTenant(tenant.id)" aria-label="Example icon button with a plus one icon">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+
     <p>name: {{tenant.firstName}}</p>
     <p>last name: {{tenant.lastName}}</p>
     <p>personal code: {{tenant.personalCode}}</p>
