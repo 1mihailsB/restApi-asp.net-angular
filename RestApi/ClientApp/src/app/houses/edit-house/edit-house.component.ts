@@ -22,7 +22,6 @@ export class EditHouseComponent {
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private router: Router, private route: ActivatedRoute) {
     http.get<House>(baseUrl + 'api/Houses/' + this.route.snapshot.params.id).subscribe(result => {
       this.house = result;
-      console.log(this.house);
     }, error => console.error(error));
   }
 

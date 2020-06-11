@@ -1,0 +1,56 @@
+<div style="border: 1px solid red">createApartment Component</div>
+
+<div class="create-apartment">
+
+  <p>
+    <mat-form-field appearance="legacy">
+      <mat-label>Apartment number</mat-label>
+      <input matInput type="number" placeholder={{apartment.number}} [(ngModel)]="apartment.number">
+      <mat-hint>int</mat-hint>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="legacy">
+      <mat-label>Floor</mat-label>
+      <input matInput type="number" placeholder={{apartment.floor}} [(ngModel)]="apartment.floor">
+      <mat-hint>int</mat-hint>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="legacy">
+      <mat-label>Amount of rooms</mat-label>
+      <input matInput type="number" placeholder={{apartment.amountOfRooms}} [(ngModel)]="apartment.amountOfRooms">
+      <mat-hint>int</mat-hint>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="legacy">
+      <mat-label>Total area</mat-label>
+      <input matInput type="number" placeholder={{apartment.totalArea}} [(ngModel)]="apartment.totalArea">
+      <mat-hint>int</mat-hint>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="legacy">
+      <mat-label>Available area</mat-label>
+      <input matInput type="number" placeholder={{apartment.availableArea}} [(ngModel)]="apartment.availableArea">
+      <mat-hint>int</mat-hint>
+    </mat-form-field>
+  </p>
+
+  <h4>Address (house)</h4>
+  <mat-form-field>
+    <mat-label>Address</mat-label>
+    <mat-select [(ngModel)]="apartment.houseId">
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let house of houses" [value]="house.id" >
+        {{house.country}}, {{house.city}}, {{house.street}} {{house.number}}, {{house.postIndex}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="example-button-row">
+    <button mat-raised-button color="primary" (click)="createApartment()">Create</button>
+  </div>
+
+</div>

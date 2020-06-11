@@ -1,1 +1,56 @@
-<div style="border: 1px solid red">Apartments Component</div>
+<div style="border: 1px solid red" class="mb-2">Apartments Component</div>
+
+<div class="example-button-container" id="add-apartment-button">
+  <button mat-mini-fab color="accent" [routerLink]="['/create-apartment']" aria-label="Example icon button with a plus one icon">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+
+<div class="row">
+  <div class="column">
+    <h3>Apartment</h3>
+  </div>
+  <div class="column">
+    <h3>House</h3>
+  </div>
+</div>
+
+
+<div *ngFor="let apartment of apartments" class="row" id="relative-parent">
+  <div class="column" id="apartments">
+    <div *ngIf="apartment!=null; then apartmentThenBlock else apartmentElseBlock"></div>
+    <ng-template #apartmentThenBlock>
+
+      <div class="example-button-container" id="edit-apartment-button">
+        <button mat-mini-fab color="accent" [routerLink]="'/edit-apartment/' + apartment.id" aria-label="Example icon button with a plus one icon">
+          <mat-icon>create</mat-icon>
+        </button>
+      </div>
+
+      <div class="example-button-container" id="delete-apartment-button">
+        <button mat-mini-fab color="accent" (click)="deleteApartment(apartment.id)" aria-label="Example icon button with a plus one icon">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+
+      <p>number: {{apartment.number}}</p>
+      <p>floor: {{apartment.floor}}</p>
+      <p>rooms: {{apartment.amountOfRooms}}</p>
+      <p>tenants: {{apartment.amountOfTenants}}</p>
+      <p>area: {{apartment.totalArea}}&#13217;</p>
+      <p>available area: {{apartment.availableArea}}&#13217;</p>
+    </ng-template>
+    <ng-template #apartmentElseBlock>none</ng-template>
+  </div>
+  <div class="column" id="apartments-house">
+    <div *ngIf="apartment!=null && apartment.house!=null; then houseThenBlock else houseElseBlock"></div>
+    <ng-template #houseThenBlock>
+      <p>number: {{apartment.house.number}}</p>
+      <p>street: {{apartment.house.street}}</p>
+      <p>city: {{apartment.house.city}}</p>
+      <p>country: {{apartment.house.country}}</p>
+      <p>post index: {{apartment.house.postIndex}}</p>
+    </ng-template>
+    <ng-template #houseElseBlock>none</ng-template>
+  </div>
+</div>
